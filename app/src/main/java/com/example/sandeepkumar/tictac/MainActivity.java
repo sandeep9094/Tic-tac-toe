@@ -4,8 +4,6 @@ import android.annotation.SuppressLint;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.GridLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -55,15 +53,12 @@ public class MainActivity extends AppCompatActivity {
 
                     String winner = "Red";
 
-                    if(gameState[winningPosition[0]]== 0)
-                        winner ="Yellow";
-
+                    if(gameState[winningPosition[0]]== 0) {
+                        winner = "Yellow";
+                    }
 
                     TextView winnerMessage = findViewById(R.id.winnerMessage);
                     winnerMessage.setText(winner +" has won");
-
-                    Button playAgainButton = findViewById(R.id.playAgainButton);
-                    playAgainButton.setVisibility(View.VISIBLE);
                     winnerMessage.setVisibility(View.VISIBLE);
 
                 } else{
@@ -75,10 +70,6 @@ public class MainActivity extends AppCompatActivity {
                     if(gameIsOver){
                         TextView winnerMessage = findViewById(R.id.winnerMessage);
                         winnerMessage.setText("It's a draw");
-
-
-                        Button playAgainButton = findViewById(R.id.playAgainButton);
-                        playAgainButton.setVisibility(View.VISIBLE);
                         winnerMessage.setVisibility(View.VISIBLE);
                     }
                 }
@@ -86,29 +77,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void playAgain(View view) {
-
-        gameIsActive =true;
-        //Making the WinnerLayout Invisible
-        TextView winnerMessage = findViewById(R.id.winnerMessage);
-        winnerMessage.setVisibility(View.INVISIBLE);
-
-        Button playAgainButton = findViewById(R.id.playAgainButton);
-        playAgainButton.setVisibility(View.INVISIBLE);
-
-        //Resetting the states
-        activePlayer = 0;
-        //Reset GameState through loop
-        for (int i = 0; i < gameState.length; i++){
-            gameState[i] = 2;
-        }
-
-        //Reset GridLayout ImageView Resources to Null.
-        GridLayout gridLayout = findViewById(R.id.gridLayout);
-        for(int i=0 ; i < gridLayout.getChildCount(); i++){
-            ((ImageView) gridLayout.getChildAt(i)).setImageResource(0);         // 0 means No Image
-        }
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
