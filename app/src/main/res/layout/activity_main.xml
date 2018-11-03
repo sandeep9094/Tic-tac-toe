@@ -6,16 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/playAgainButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="playAgain"
-        android:text="Play Again"
-        android:visibility="invisible"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="273dp" />
-
     <android.support.v7.widget.GridLayout
         android:id="@+id/gridLayout"
         android:layout_width="350dp"
@@ -174,11 +164,21 @@
             android:textAlignment="center"
             android:textSize="30sp"
             android:textStyle="bold"
-            android:visibility="invisible"
+            android:visibility="visible"
             app:layout_constraintBottom_toTopOf="@+id/gridLayout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/playAgainButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="playAgain"
+            android:text="Play Again"
+            android:visibility="visible"
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="273dp" />
 
     </LinearLayout>
 

@@ -3,10 +3,8 @@ package com.example.sandeepkumar.tictac;
 import android.annotation.SuppressLint;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.GridLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -59,9 +57,6 @@ public class MainActivity extends AppCompatActivity {
 
                     String winner = "Red";
 
-                    linearLayout = findViewById(R.id.linearLayout);
-                    linearLayout.setVisibility(View.VISIBLE);
-
                     playAgainButton = findViewById(R.id.playAgainButton);
                     playAgainButton.setVisibility(View.VISIBLE);
 
@@ -71,7 +66,9 @@ public class MainActivity extends AppCompatActivity {
 
                     TextView winnerMessage = findViewById(R.id.winnerMessage);
                     winnerMessage.setText(winner +" has won");
-                    winnerMessage.setVisibility(View.VISIBLE);
+
+                    linearLayout = findViewById(R.id.linearLayout);
+                    linearLayout.setVisibility(View.VISIBLE);
 
                 } else{
                     boolean gameIsOver = true;
@@ -82,7 +79,9 @@ public class MainActivity extends AppCompatActivity {
                     if(gameIsOver){
                         TextView winnerMessage = findViewById(R.id.winnerMessage);
                         winnerMessage.setText("It's a draw");
-                        winnerMessage.setVisibility(View.VISIBLE);
+
+                        linearLayout = findViewById(R.id.linearLayout);
+                        linearLayout.setVisibility(View.VISIBLE);
                     }
                 }
             }
@@ -92,11 +91,11 @@ public class MainActivity extends AppCompatActivity {
     public void playAgain(View view){
 
         activePlayer = 0;
-        gameIsActive =false;
+        gameIsActive =true;
+        linearLayout = findViewById(R.id.linearLayout);
         linearLayout.setVisibility(View.INVISIBLE);
-        playAgainButton.setVisibility(View.INVISIBLE);
 
-        android.support.v7.widget.GridLayout gridLayout = (android.support.v7.widget.GridLayout)findViewById(R.id.gridLayout);
+        android.support.v7.widget.GridLayout gridLayout = findViewById(R.id.gridLayout);
         for(int i = 0 ; i< gridLayout.getChildCount(); i++){
             ((ImageView)gridLayout.getChildAt(i)).setImageResource(0);
         }
@@ -106,10 +105,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
     }
 }
