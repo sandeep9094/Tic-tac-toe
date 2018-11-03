@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
             counter.animate()                                       //Animate the Coin
                     .translationXBy(1000f)                          //Moving the coin to poistion by 1000 pixels
                     .setDuration(300);                              //Time taken to make visible the coin.
-
+//
             for (int[] winningPosition : winningPositions){
 
                 if(gameState[winningPosition[0]] == gameState[winningPosition[1]]
