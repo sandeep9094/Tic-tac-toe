@@ -3,8 +3,12 @@ package com.example.sandeepkumar.tictac;
 import android.annotation.SuppressLint;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.GridLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
@@ -17,6 +21,8 @@ public class MainActivity extends AppCompatActivity {
     int[] gameState = {2,2,2,2,2,2,2,2,2};
     //3 rows, 3 coloums and 2 Diagonals are Winning Positions.
     int[][] winningPositions = {{0,1,2}, {3,4,5}, {6,7,8}, {0,3,6}, {1,4,7}, {2,5,8}, {0,4,8}, {2,4,6}};
+    LinearLayout linearLayout;
+    Button playAgainButton;
 
     @SuppressLint("SetTextI18n")
     public void dropIn(View view){
@@ -53,6 +59,12 @@ public class MainActivity extends AppCompatActivity {
 
                     String winner = "Red";
 
+                    linearLayout = findViewById(R.id.linearLayout);
+                    linearLayout.setVisibility(View.VISIBLE);
+
+                    playAgainButton = findViewById(R.id.playAgainButton);
+                    playAgainButton.setVisibility(View.VISIBLE);
+
                     if(gameState[winningPosition[0]]== 0) {
                         winner = "Yellow";
                     }
@@ -74,6 +86,23 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
             }
+        }
+    }
+
+    public void playAgain(View view){
+
+        activePlayer = 0;
+        gameIsActive =false;
+        linearLayout.setVisibility(View.INVISIBLE);
+        playAgainButton.setVisibility(View.INVISIBLE);
+
+        android.support.v7.widget.GridLayout gridLayout = (android.support.v7.widget.GridLayout)findViewById(R.id.gridLayout);
+        for(int i = 0 ; i< gridLayout.getChildCount(); i++){
+            ((ImageView)gridLayout.getChildAt(i)).setImageResource(0);
+        }
+
+        for(int i = 0 ; i < gameState.length ; i++){
+            gameState[i] = 2;
         }
     }
 
