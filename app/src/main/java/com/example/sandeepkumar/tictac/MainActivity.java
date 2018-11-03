@@ -9,7 +9,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-
 public class MainActivity extends AppCompatActivity {
 
     // 0 = yellow player , 1 = red player.
@@ -25,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
     @SuppressLint("SetTextI18n")
     public void dropIn(View view){
 
+        TextView playerText = findViewById(R.id.playerTextView);
+
         ImageView counter = (ImageView)view;                    //We want the view which is pass in method
         //therefore We dont need to find the view by its id like in others methods to find button id like.
 
@@ -35,9 +36,11 @@ public class MainActivity extends AppCompatActivity {
             counter.setTranslationX(-1000f);                        //Setting the Coins Invisible first
 
             if(activePlayer ==0) {
+                playerText.setText("Player Turn: Red");
                 counter.setImageResource(R.drawable.yellow);        //First Trun Play by Yellow Player
                 activePlayer =1;                                    //Changing the Player to Red
             } else{
+                playerText.setText("Player Turn: Yellow");
                 counter.setImageResource(R.drawable.red);           //Red Players Trun
                 activePlayer =0;                                    //Changing Back to Yellow Player
             }
@@ -64,6 +67,8 @@ public class MainActivity extends AppCompatActivity {
                         winner = "Yellow";
                     }
 
+                    playerText.setText("");
+
                     TextView winnerMessage = findViewById(R.id.winnerMessage);
                     winnerMessage.setText(winner +" has won");
 
@@ -79,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
                     if(gameIsOver){
                         TextView winnerMessage = findViewById(R.id.winnerMessage);
                         winnerMessage.setText("It's a draw");
-
+                        playerText.setText("");
                         linearLayout = findViewById(R.id.linearLayout);
                         linearLayout.setVisibility(View.VISIBLE);
                     }
@@ -92,6 +97,8 @@ public class MainActivity extends AppCompatActivity {
 
         activePlayer = 0;
         gameIsActive =true;
+        TextView playerText = findViewById(R.id.playerTextView);
+        playerText.setText("Player 1: Yellow\nPlayer 2: Red");
         linearLayout = findViewById(R.id.linearLayout);
         linearLayout.setVisibility(View.INVISIBLE);
 
